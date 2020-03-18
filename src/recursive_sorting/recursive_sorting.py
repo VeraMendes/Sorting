@@ -59,7 +59,7 @@ def merge(arrA, arrB):
     return merged_arr
 
 
-# TO-DO: implement the Merge Sort function below USING RECURSION
+# implement the Merge Sort function below USING RECURSION
 def merge_sort(arr):
 
     # check if array has more than one element, 
