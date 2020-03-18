@@ -30,7 +30,7 @@ def merge(arrA, arrB):
             for value in arrB[j:]:
                 merged_arr.append(value)
             break
-  
+
         # if index of B go over len of array, then only append the rest of the
         # array A into the final array
         elif j == len(arrB):
@@ -45,7 +45,7 @@ def merge(arrA, arrB):
 
             # append to final array the smallest value found from the
             # comparation of both arrays
-          
+       
             if arrA[i] < arrB[j]:
                 merged_arr.append(arrA[i])
                 i += 1
@@ -124,8 +124,22 @@ def merge_in_place(arr, start, mid, end):
     return arr
 
 def merge_sort_in_place(arr, l, r):
-    # TO-DO
-
+    l = 1
+    while l <= len(arr):
+        r = 0
+        for r in range(0,len(arr), l * 2):
+            left, right = r, min(len(arr), r + 2 * l)
+            mid = r + l
+            p, q = left, mid
+            while p < mid and q < right:
+                if arr[p] < arr[q]:  # already sorted...
+                    p += 1 # ... skip to next pair
+                else: # need to swap...
+                    temp = arr[q]  # store temp value...
+                    arr[p + 1: q + 1] = arr[p:q]  # ... shift to the right...
+                    arr[p] = temp # update value
+                    p, mid, q = p + 1, mid + 1, q + 1  # ... go to next pair
+        l *= 2
     return arr
 
 
